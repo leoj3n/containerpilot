@@ -297,11 +297,11 @@ If you combine `loop` and `env` you can create jobs or watches dynamically:
 
 ```
   watches: [
-    {{ range $i := loop 0 5 -}}{{ if (env (printf "SERVICE_NAME_%d" $i)) -}}
+    {{ range $i := loop 0 5 }}{{ if (env (printf "SERVICE_NAME_%d" $i)) }}
     {
       name: "{{ (env (printf "SERVICE_NAME_%d" $i)) }}",
       interval: {{ (env (printf "SERVICE_INTERVAL_%d" $i)) | default 10 }}
     },
-    {{- end }}{{- end }}
+    {{ end }}{{ end }}
   ],
 ```
